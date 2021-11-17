@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace CoreAngular.Controllers
 {
@@ -19,6 +20,7 @@ namespace CoreAngular.Controllers
         }
 
         [HttpGet]
+        [EnableQuery]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

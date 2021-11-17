@@ -1,4 +1,5 @@
 using DataAccess.DataContexts.ApplicationDbContext;
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ var connStr = builder.Configuration.GetSection($"DBSettings:{builder.Environment
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connStr));
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddOData(options => options.Select().Filter().OrderBy());
 
 var app = builder.Build();
 
