@@ -6,28 +6,28 @@ import { ODataClient, ODataServiceFactory } from "angular-odata";
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  constructor() {
+  constructor(private factory: ODataServiceFactory) {
     this.select();
   }
 
   private select() {
-    //let airportsService = this.factory.entitySet<any>(
-    //  "Airports",
-    //  "Microsoft.OData.SampleService.Models.TripPin.Airport"
-    //);
-    //let airports = airportsService.entities();
+    let airportsService = this.factory.entitySet<any>(
+      "Airports",
+      "Microsoft.OData.SampleService.Models.TripPin.Airport"
+    );
+    let airports = airportsService.entities();
 
-    //// Fetch airports
-    //airports.fetch().subscribe(({ entities }) => {
-    //  console.log("Airports: ", entities);
-    //});
+    // Fetch airports
+    airports.fetch().subscribe(({ entities }) => {
+      console.log("Airports: ", entities);
+    });
 
 
 
-    //let forecastService = this.factory.entitySet<WeatherForecast>(
-    //  "",
-    //  ""
-    //);
+    let forecastService = this.factory.entitySet<WeatherForecast>(
+      "",
+      ""
+    );
 
     //let forecasts = forecastService.entities();
 
