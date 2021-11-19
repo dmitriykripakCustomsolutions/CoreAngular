@@ -1,4 +1,5 @@
-﻿using DataAccess.DataContexts.ApplicationDbContext.Entities;
+﻿using Audit.EntityFramework;
+using DataAccess.DataContexts.ApplicationDbContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DataContexts.ApplicationDbContext
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : AuditDbContext, IApplicationDbContext
     {
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 		  : base(options)
